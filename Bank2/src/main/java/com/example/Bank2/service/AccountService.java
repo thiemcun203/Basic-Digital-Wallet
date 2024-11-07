@@ -1,5 +1,6 @@
 package com.example.Bank2.service;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.example.Bank2.model.Account;
@@ -64,8 +65,8 @@ public class AccountService {
     }
 
     public String requestAddMoney(Long accountId, Long amount) {
-        String url = String.format("http://localhost:8081/account/addMoney?accountId=%d&amount=%d", accountId, amount);
-        String response = restTemplate.getForObject(url, String.class);
+        String url = String.format("http://localhost:8080/account/addMoney?accountId=%d&amount=%d", accountId, amount);
+        String response = restTemplate.exchange(url, HttpMethod.PUT, null, String.class).getBody();
         return response;
     }
 }
