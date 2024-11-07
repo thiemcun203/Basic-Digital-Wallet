@@ -1,0 +1,28 @@
+-- CREATE TABLE customer (
+--     customer_id BIGINT PRIMARY KEY NOT NULL UNIQUE,
+--     customer_name VARCHAR(255),
+--     customer_phone_number BIGINT
+-- );
+
+-- CREATE TABLE account (
+--     account_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+--     customer_id BIGINT,
+--     balance DOUBLE,
+--     status VARCHAR(255),
+--     FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
+-- );
+
+-- CREATE TABLE transaction (
+--     transaction_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+--     source_id BIGINT,
+--     target_id BIGINT,
+--     target_bank_id VARCHAR(255),
+--     amount BIGINT,
+--     status VARCHAR(255)
+-- );
+
+-- SELECT * FROM customer
+
+-- SELECT * FROM account
+
+-- SELECT * FROM transaction
