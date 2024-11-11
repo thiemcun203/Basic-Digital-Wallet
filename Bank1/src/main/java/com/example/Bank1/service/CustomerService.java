@@ -22,8 +22,8 @@ public class CustomerService {
         return customers;
     }
 
-    public Customer createCustomer(Long customerId, String customerName, Long customerPhoneNumber) {
-        Customer customer = new Customer(customerId, customerName, customerPhoneNumber);
+    public Customer createCustomer(Long customerId, String customerName, Long customerPhoneNumber, String username, String password) {
+        Customer customer = new Customer(customerId, customerName, customerPhoneNumber, username, password);
         return customerRepository.save(customer);
     }
 

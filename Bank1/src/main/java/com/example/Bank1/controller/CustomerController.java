@@ -28,8 +28,10 @@ public class CustomerController {
     public ResponseEntity<Customer> createCustomer(
             @RequestParam Long customerId,
             @RequestParam String customerName,
-            @RequestParam Long customerPhoneNumber) {
-        Customer customer = customerService.createCustomer(customerId, customerName, customerPhoneNumber);
+            @RequestParam Long customerPhoneNumber,
+            @RequestParam String username,
+            @RequestParam String password) {
+        Customer customer = customerService.createCustomer(customerId, customerName, customerPhoneNumber, username, password);
         return ResponseEntity.ok(customer);
     }
 }
