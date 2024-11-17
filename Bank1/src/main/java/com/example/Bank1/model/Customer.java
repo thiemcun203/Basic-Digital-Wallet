@@ -29,11 +29,11 @@ public class Customer {
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "user_seq_gen"
+            generator = "customer_seq_gen"
     )
     @SequenceGenerator(
-            name = "user_seq_gen",
-            sequenceName = "user_seq",
+            name = "customer_seq_gen",
+            sequenceName = "customer_seq",
             allocationSize = 5
     )
     private Long customerId;
@@ -51,8 +51,8 @@ public class Customer {
     private String password;
 
     @ManyToMany(cascade = CascadeType.MERGE)
-    @JoinTable(name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "customerId", nullable = false),
+    @JoinTable(name = "customer_role",
+            joinColumns = @JoinColumn(name = "customer_id", referencedColumnName = "customerId", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "roleId")
     )
     private Set<Role> roles = new HashSet<>();

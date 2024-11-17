@@ -1,6 +1,5 @@
 package com.example.Bank1.controller;
 
-import com.example.Bank1.model.Account;
 import com.example.Bank1.model.Transaction;
 import com.example.Bank1.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;

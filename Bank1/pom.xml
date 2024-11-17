@@ -139,6 +139,17 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+	        <plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>10.10.0</version>
+				<configuration>
+					<cleanDisabled>false</cleanDisabled>
+					<url>jdbc:postgresql://localhost:9876/bank1</url>
+					<user>postgres</user>
+					<password>postgres</password>
+				</configuration>
+			</plugin>			
 		</plugins>
 	</build>
 </project>
