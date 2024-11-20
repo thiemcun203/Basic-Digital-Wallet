@@ -20,8 +20,8 @@ public final class Constants {
     public static final String SUCCESS = "Success";
     public static final String UNAUTHORIZED = "Unauthorized";
     public static final String UNAUTHORIZED_ERROR = "Unauthorized error: {}";
-    public static final String CANNOT_SET_AUTH = "Cannot set user authentication: {}";
-    public static final String NOT_FOUND_USERNAME = "User with username of {0} is not found";
+    public static final String CANNOT_SET_AUTH = "Cannot set customer authentication: {}";
+    public static final String NOT_FOUND_USERNAME = "Customer with username of {0} is not found";
     public static final String INVALID_JWT_SIGN = "Invalid JWT signature: {}";
     public static final String INVALID_JWT_TOKEN = "Invalid JWT token: {}";
     public static final String JWT_EXPIRED = "JWT token is expired: {}";
@@ -33,17 +33,17 @@ public final class Constants {
     // public static final String FIELD_NOT_VALIDATED = "Field is not validated";
     public static final String CLASS_CANNOT_BE_INSTANTIATED = "This is a utility class and cannot be instantiated";
 
-    public static final String LOGGED_IN_USER = "User logged in (username: {})";
+    public static final String LOGGED_IN_USER = "Customer logged in (username: {})";
     public static final String ALREADY_EXISTS = "Requested element already exists";
-    public static final String ALREADY_EXISTS_USER_NAME = "User with the same username already exists";
-    // public static final String ALREADY_EXISTS_USER_EMAIL = "User with the same email already exists";
+    public static final String ALREADY_EXISTS_USER_NAME = "Customer with the same username already exists";
+    // public static final String ALREADY_EXISTS_USER_EMAIL = "Customer with the same email already exists";
     // public static final String ALREADY_EXISTS_WALLET_IBAN = "Wallet with the same iban already exists";
     // public static final String ALREADY_EXISTS_WALLET_NAME = "Wallet with the same name already exists";
     // public static final String NOT_FOUND = "Requested element is not found";
     // public static final String NOT_FOUND_RECORD = "Not found any record";
     // public static final String NOT_FOUND_WALLET = "Requested wallet is not found";
     // public static final String NOT_FOUND_TRANSACTION = "Requested transaction is not found";
-    public static final String CREATED_USER = "User is created (username: {})";
+    public static final String CREATED_USER = "Customer is created (username: {})";
     // public static final String CREATED_WALLET = "Wallet is created (iban: {} --- name: {} --- balance: {})";
     // public static final String CREATED_TRANSACTION = "Transaction is created (from: {} --- to: {} --- amount: {})";
     // public static final String UPDATED_WALLET = "Wallet is updated (iban: {} --- name: {} --- balance: {})";

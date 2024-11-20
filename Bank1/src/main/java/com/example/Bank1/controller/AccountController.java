@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/account")
+@RequestMapping("api/v1/account")
 public class AccountController {
     private final AccountService accountService;
 
