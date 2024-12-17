@@ -26,8 +26,8 @@ public class AccountService {
         return accounts;
     }
 
-    public Account createAccount(Long customerId) {
-        Account account = new Account(customerId);
+    public Account createAccount(Long customerId, Double balance, String status) {
+        Account account = new Account(customerId, balance, status);
         return accountRepository.save(account);
     }
 

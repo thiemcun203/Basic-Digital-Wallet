@@ -23,10 +23,10 @@ public class Account {
         this.balance = 0.0;
     }
 
-    public Account(Long userId) {
+    public Account(Long userId, double balance, String status) {
         this.customerId = userId;
-        this.status = "Open";
-        this.balance = 0.0;
+        this.balance = balance;
+        this.status = status;
     }
 
     public Long getAccountId() {return this.accountId;}
