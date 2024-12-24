@@ -30,8 +30,8 @@ public class TransactionService {
     public Transaction creatTransaction(Long sourceId, Long targetId, String targetBankId, Long amount) {
         Transaction transaction = new Transaction(sourceId, targetId, targetBankId, amount);
         String check;
-        if ("bank2".equals(targetBankId)) {check = internalTransact(sourceId, targetId, amount);}
-        else if ("bank1".equals(targetBankId)) {check = externalTransact(sourceId, targetId, amount);}
+        if ("Bank2".equals(targetBankId)) {check = internalTransact(sourceId, targetId, amount);}
+        else if ("Bank1".equals(targetBankId)) {check = externalTransact(sourceId, targetId, amount);}
         else {check = "Unknown bank";}
         transaction.setStatus(check);
         return transactionRepository.save(transaction);
