@@ -28,6 +28,12 @@ public class AccountController {
         return ResponseEntity.ok(accounts);
     }
 
+    @GetMapping("/getUserAccounts")
+    public ResponseEntity<List<Account>> getUserAccounts(@RequestParam(value = "userId", required = false) Long userId) {
+        List<Account> accounts = accountService.getAccountsByCustomerId(userId);
+        return ResponseEntity.ok(accounts);
+    }
+
     // Updated endpoint to create an account using @RequestBody
     @PostMapping("/createAccount")
     public ResponseEntity<Account> createAccount(@RequestBody Map<String, Object> payload) {
@@ -61,15 +67,11 @@ public class AccountController {
 
     // Endpoint to add money to an account
     @PutMapping("/addMoney")
-    public String addMoney(@RequestBody Map<String, Object> payload) {
+    public ResponseEntity<String> addMoney(@RequestBody Map<String, Object> payload) {
         Long accountId = Long.valueOf(payload.get("accountId").toString());
         Long amount = Long.valueOf(payload.get("amount").toString());
-
-        String result = "Fail";
-        if (accountService.verifyAccount(accountId)) {
-            accountService.addMoney(accountId, amount);
-            result = "Success";
-        }
-        return result;
-    }
+    
+        String result = accountService.addMoneyWithTransaction(accountId, amount);
+        return ResponseEntity.ok(result);
+    }    
 }

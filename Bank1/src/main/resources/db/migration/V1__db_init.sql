@@ -16,8 +16,8 @@ CREATE TABLE role
 CREATE TABLE transaction
 (
     transaction_id          BIGINT              NOT NULL,
-    source_id               BIGINT              NOT NULL,
-    target_id               BIGINT              NOT NULL,
+    source_id               BIGINT              ,
+    target_id               BIGINT              ,
     target_bank_id          VARCHAR(20)         NOT NULL,
     amount                  DECIMAL             NOT NULL,
     status                  VARCHAR(20)         NOT NULL,
@@ -51,6 +51,8 @@ CREATE TABLE public.customer_role
 );
 
 ALTER TABLE account ALTER COLUMN account_id SET DEFAULT nextval('account_seq');
+
+ALTER TABLE transaction ALTER COLUMN transaction_id SET DEFAULT nextval('transaction_seq');
 
 ALTER TABLE role
     ADD CONSTRAINT uc_role_type UNIQUE (type);

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.example.Bank1.model.Transaction;
 import com.example.Bank1.repository.TransactionRepository;
 
+import java.util.stream.Collectors;
 import java.util.List;
 
 @Service
@@ -22,6 +23,19 @@ public class TransactionService {
         this.accountService = accountService;
     }
 
+    public List<Transaction> getTransactionsByUserId(Long userId) {
+        // Fetch all accounts associated with the user
+        List<Account> userAccounts = accountRepository.findByCustomerId(userId);
+
+        // Extract all account IDs for the user
+        List<Long> accountIds = userAccounts.stream()
+                                             .map(Account::getAccountId)
+                                             .collect(Collectors.toList());
+
+        // Fetch transactions where sourceId or targetId matches any of the user's account IDs
+        return transactionRepository.findBySourceIdInOrTargetIdIn(accountIds, accountIds);
+    }
+
     public List<Transaction> getAllTransactions() {
         List<Transaction> transactions = transactionRepository.findAll();
         return transactions;
@@ -30,8 +44,8 @@ public class TransactionService {
     public Transaction creatTransaction(Long sourceId, Long targetId, String targetBankId, Long amount) {
         Transaction transaction = new Transaction(sourceId, targetId, targetBankId, amount);
         String check;
-        if ("bank1".equals(targetBankId)) {check = internalTransact(sourceId, targetId, amount);}
-        else if ("bank2".equals(targetBankId)) {check = externalTransact(sourceId, targetId, amount);}
+        if ("Bank1".equals(targetBankId)) {check = internalTransact(sourceId, targetId, amount);}
+        else if ("Bank2".equals(targetBankId)) {check = externalTransact(sourceId, targetId, amount);}
         else {check = "Unknown bank";}
         transaction.setStatus(check);
         return transactionRepository.save(transaction);

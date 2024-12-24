@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 import java.util.List;
 
 @RestController
@@ -18,20 +20,26 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
+    @GetMapping("/getUserTransactions")
+    public ResponseEntity<List<Transaction>> getUserTransactions(@RequestParam Long userId) {
+        List<Transaction> transactions = transactionService.getTransactionsByUserId(userId);
+        return ResponseEntity.ok(transactions);
+    }    
+
     @GetMapping("/getAllTransactions")
-    public ResponseEntity<List<Transaction>> getAllAccounts() {
+    public ResponseEntity<List<Transaction>> getAllTransactions() {
         List<Transaction> transactions = transactionService.getAllTransactions();
         return ResponseEntity.ok(transactions);
     }
 
     @PostMapping("/createTransaction")
-    public ResponseEntity<Transaction> createTransaction(
-            @RequestParam("sourceId") Long sourceId,
-            @RequestParam("targetId") Long targetId,
-            @RequestParam("targetBankId") String targetBankId,
-            @RequestParam("amount") Long amount) {
+    public ResponseEntity<Transaction> createTransaction(@RequestBody Map<String, Object> payload) {
+        Long sourceId = Long.valueOf(payload.get("sourceId").toString());
+        Long targetId = Long.valueOf(payload.get("targetId").toString());
+        String targetBankId = "Bank1";
+        Long amount = Long.valueOf(payload.get("amount").toString());
+    
         Transaction transaction = transactionService.creatTransaction(sourceId, targetId, targetBankId, amount);
         return ResponseEntity.ok(transaction);
-    }
-
+    }    
 }
